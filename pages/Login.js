@@ -5,22 +5,56 @@ import Input from './Input'
 
 export default class Login extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: "",
+            pass: "",
+        }
+    }
+
     render() {
         return (
             <View>
 
-                <Input/>
-                <Input/>
+                <Input
+                    placeholder={this.props.userPlaceholder}
+                    textChangeCallBack={(data) => {
+                        this.setState({
+                            user: data.text
+                        })
+                    }}/>
+
+                <Input
+                    placeholder={this.props.passPlaceholder}
+                    textChangeCallBack={(data) => {
+                        this.setState({
+                            pass: data.text
+                        })
+                    }}/>
 
                 <View style={styles.button_parent}>
                     <Button
                         style={styles.btn}
+                        onPress={() => {
+                            this.click()
+                        }}
                         title="登录"/>
                 </View>
 
             </View>
         );
     }
+
+    click() {
+        if (this.state.user.length === 0) {
+            Alert.alert("账号为空");
+        } else if (this.state.pass.length === 0) {
+            Alert.alert("密码为空");
+        } else {
+            this.props.clickCallBack({"user":this.state.user,"pass":this.state.pass})
+        }
+    };
 }
 
 

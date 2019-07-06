@@ -1,4 +1,3 @@
-// App.js
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 
@@ -10,7 +9,13 @@ export default class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Login/>
+                <Login
+                    userPlaceholder={"请输入用户名"}
+                    passPlaceholder={"请输入密码"}
+                    clickCallBack={(data)=>{
+                        alert("用户名："+data.user+"，密码：" +data.pass)
+                    }}
+                    />
             </View>
         );
     }

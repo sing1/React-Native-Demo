@@ -3,14 +3,26 @@ import {StyleSheet, View, TextInput} from 'react-native';
 
 export default class Input extends Component {
 
+    constructor(props) {
+        super(props);
+        this._onChangeText = this._onChangeText.bind(this);
+    }
+
     render() {
         return (
             <View >
+
                 <TextInput
-                    placeholder={"请输入.."}
+                    value={this.props.txt}
+                    onChangeText={this._onChangeText}
+                    placeholder={this.props.placeholder}
                     style={styles.inputText}/>
             </View>
         );
+    }
+
+    _onChangeText(input) {
+        this.props.textChangeCallBack({"text":input})
     }
 }
 
