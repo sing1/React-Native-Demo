@@ -18,7 +18,7 @@ export default class Login extends Component {
             <View>
 
                 <Input
-                    placeholder={this.props.userPlaceholder}
+                    textHint={"请输入用户名"}
                     textChangeCallBack={(data) => {
                         this.setState({
                             user: data.text
@@ -26,7 +26,7 @@ export default class Login extends Component {
                     }}/>
 
                 <Input
-                    placeholder={this.props.passPlaceholder}
+                    textHint={"请输入密码"}
                     textChangeCallBack={(data) => {
                         this.setState({
                             pass: data.text
@@ -53,6 +53,7 @@ export default class Login extends Component {
             Alert.alert("密码为空");
         } else {
             this.props.clickCallBack({"user":this.state.user,"pass":this.state.pass})
+            // Alert.alert({"user":this.state.user,"pass":this.state.pass});
         }
     };
 }

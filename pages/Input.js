@@ -5,6 +5,8 @@ export default class Input extends Component {
 
     constructor(props) {
         super(props);
+        // bind()方法会创建一个新函数，当这个新函数被调用时，它的this值是传
+        // 递给bind()的第一个参数, 它的参数是bind()的其他参数和其原本的参数
         this._onChangeText = this._onChangeText.bind(this);
     }
 
@@ -13,9 +15,8 @@ export default class Input extends Component {
             <View >
 
                 <TextInput
-                    value={this.props.txt}
                     onChangeText={this._onChangeText}
-                    placeholder={this.props.placeholder}
+                    placeholder={this.props.textHint}
                     style={styles.inputText}/>
             </View>
         );
